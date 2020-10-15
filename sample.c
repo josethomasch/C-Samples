@@ -1,9 +1,1 @@
-/*#####SAMPLE FILE#############
- */
-
-#include <stdio.h>
-
-void main (void* argc, void* argv[])
-{
-	printf("Hello World");
-}
+/*#####SAMPLE FILE############# */#include <stdio.h>#include <stdlib.h>typedef struct{	int data;	struct node_t *next;}node_t;node_t *main_list;int CountNode (node_t *head){	int count = 0;	printf("\nhead : %d", head);		if (head)	{		count = 1;				printf("\ncount : %d", count);				while (head->next != NULL)		{			count++;			head = head->next;		}	}	return count;}void AddToTail (node_t **head){	node_t *head_node = *head;	node_t *new_node = (node_t*) malloc (sizeof(node_t));	new_node->next = NULL;		if (*head != NULL)	{		while((*head)->next != NULL)		{			*(head) = (node_t*)(*head)->next;		}		(*head)->next = new_node;		*head = (node_t*)head_node;	}	else	{		*head = new_node;	}}void main (void* argc, void* argv[]){	printf("\nHello World %d", main_list);	AddToTail(&main_list);	AddToTail(&main_list);		AddToTail(&main_list);	printf("\nHello World %d", main_list);	printf("\nHello World %d", CountNode(main_list));}
